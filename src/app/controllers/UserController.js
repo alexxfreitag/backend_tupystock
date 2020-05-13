@@ -12,9 +12,9 @@ class UserController {
       return res
         .status(400)
         .json({ error: 'Já existe um usuário com esse nome.' });
-
+    console.log('teste1');
     const { id, name } = await User.create(req.body);
-
+    console.log('teste2');
     return res.json({ id, name });
   }
 }

@@ -12,5 +12,6 @@ routes.get('/', (req, res) => {
 routes.get('/users', UserController.index);
 routes.post('/users', UserController.store);
 routes.post('/orders', OrderController.store);
+routes.get('/orders', OrderController.index);
 
 export default routes;
