@@ -4,7 +4,7 @@ class Order extends Model {
   static init(sequelize) {
     super.init(
       {
-        total_amount: Sequelize.DOUBLE,
+        total_value: Sequelize.DOUBLE,
       },
       {
         sequelize,
