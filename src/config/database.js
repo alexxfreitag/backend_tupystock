@@ -11,5 +11,5 @@ module.exports = {
     underscored: true,
     underscoredAll: true,
   },
-  logging: process.env.NODE_ENV === 'development',
+  logging: false,
 };

@@ -2,6 +2,7 @@ import { Router } from 'express';
 
 import UserController from './app/controllers/UserController';
 import OrderController from './app/controllers/OrderController';
+import SessionController from './app/controllers/SessionController';
 
 const routes = new Router();
 
@@ -13,5 +14,6 @@ routes.get('/users', UserController.index);
 routes.post('/users', UserController.store);
 routes.post('/orders', OrderController.store);
 routes.get('/orders', OrderController.index);
+routes.post('/sessions', SessionController.store);
 
 export default routes;
