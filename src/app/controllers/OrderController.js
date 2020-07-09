@@ -17,7 +17,6 @@ class OrderController {
   }
 
   async store(req, res) {
-    console.log(req.body);
     const { id, user_id, total_value } = await Order.create(req.body);
 
     return res.json({ id, user_id, total_value });

@@ -1,12 +1,14 @@
-import User from '../models/User';
+import Product from '../models/Product';
 
-class UserController {
+class ProductController {
   async index(req, res) {
-    const users = await User.findAll();
-    return res.json(users);
+    console.log('teste');
+    const products = await Product.findAll();
+    console.log(products);
+    return res.json(products);
   }
 
-  async store(req, res) {
+  /* async store(req, res) {
     const userExists = await User.findOne({ where: { name: req.body.name } });
     if (userExists)
       return res
@@ -16,7 +18,7 @@ class UserController {
     const { id, name } = await User.create(req.body);
 
     return res.json({ id, name });
-  }
+  } */
 }
 
-export default new UserController();
+export default new ProductController();
