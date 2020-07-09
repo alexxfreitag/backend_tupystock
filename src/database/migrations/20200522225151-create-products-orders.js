@@ -22,7 +22,7 @@ module.exports = {
             references: { model: 'orders', key: 'id' },
             onUpdate: 'CASCADE',
             onDelete: 'SET NULL',
-            allowNull: false,
+            allowNull: true,
           },
           product_total_value: {
             type: Sequelize.DOUBLE,
