@@ -17,5 +17,6 @@ routes.post('/orders', OrderController.store);
 routes.get('/orders', OrderController.index);
 routes.post('/sessions', SessionController.store);
 routes.get('/products', ProductController.index);
+routes.post('/products', ProductController.store);
 
 export default routes;

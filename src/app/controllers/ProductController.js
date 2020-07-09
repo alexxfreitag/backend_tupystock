@@ -2,23 +2,22 @@ import Product from '../models/Product';
 
 class ProductController {
   async index(req, res) {
-    console.log('teste');
     const products = await Product.findAll();
-    console.log(products);
     return res.json(products);
   }
 
-  /* async store(req, res) {
-    const userExists = await User.findOne({ where: { name: req.body.name } });
-    if (userExists)
+  async store(req, res) {
+    const { description } = req.body;
+    const productExists = await Product.findOne({ where: { description } });
+    if (productExists)
       return res
         .status(400)
-        .json({ error: 'Já existe um usuário com esse nome.' });
+        .json({ error: 'Já existe um produto com essa descrição.' });
 
-    const { id, name } = await User.create(req.body);
+    const result = await Product.create(req.body);
 
-    return res.json({ id, name });
-  } */
+    return res.json(result);
+  }
 }
 
 export default new ProductController();
