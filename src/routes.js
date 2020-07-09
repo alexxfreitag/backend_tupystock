@@ -20,5 +20,6 @@ routes.post('/sessions', SessionController.store);
 routes.get('/products', ProductController.index);
 routes.post('/products', ProductController.store);
 routes.get('/products_order', ProductsOrderController.index);
+routes.post('/products_order', ProductsOrderController.store);
 
 export default routes;

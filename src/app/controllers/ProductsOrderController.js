@@ -1,4 +1,5 @@
 import ProductsOrder from '../models/ProductsOrder';
+import Product from '../models/Product';
 
 class ProductsOrderController {
   async index(req, res) {
@@ -6,18 +7,26 @@ class ProductsOrderController {
     return res.json(productsOrders);
   }
 
-  /* async store(req, res) {
-    const { description } = req.body;
-    const productExists = await Product.findOne({ where: { description } });
-    if (productExists)
-      return res
-        .status(400)
-        .json({ error: 'Já existe um produto com essa descrição.' });
+  async store(req, res) {
+    const { product_id, amount } = req.body;
+    const product = await Product.findOne({
+      where: { id: product_id },
+    });
 
-    const result = await Product.create(req.body);
+    if (!product)
+      return res.status(400).json({ error: 'Produto inexistente.' });
+
+    const { value } = product;
+    const product_total_value = value * amount;
+
+    const result = await ProductsOrder.create({
+      product_id,
+      product_total_value,
+      amount,
+    });
 
     return res.json(result);
-  } */
+  }
 }
 
 export default new ProductsOrderController();
