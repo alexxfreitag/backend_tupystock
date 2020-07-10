@@ -24,6 +24,7 @@ routes.post('/sessions', SessionController.store);
 routes.get('/products', ProductController.index);
 routes.post('/products', ProductController.store);
 routes.get('/products_order', ProductsOrderController.index);
+routes.get('/files', FileController.index);
 routes.post('/files', upload.single('file'), FileController.store);
 
 export default routes;
