@@ -3,11 +3,20 @@ import Product from '../models/Product';
 
 class ProductsOrderController {
   async index(req, res) {
-    const productsOrders = await ProductsOrder.findAll();
+    const productsOrders = await ProductsOrder.findAll({
+      attributes: ['id', 'product_total_value', 'amount', 'order_id'],
+      include: [
+        {
+          model: Product,
+          as: 'product',
+          attributes: ['id', 'description', 'value', 'category', 'active'],
+        },
+      ],
+    });
     return res.json(productsOrders);
   }
 
-  async store(req, res) {
+  /* async store(req, res) {
     const { product_id, amount } = req.body;
     const product = await Product.findOne({
       where: { id: product_id },
@@ -26,7 +35,7 @@ class ProductsOrderController {
     });
 
     return res.json(result);
-  }
+  } */
 }
 
 export default new ProductsOrderController();
