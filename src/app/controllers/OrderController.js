@@ -58,8 +58,6 @@ class OrderController {
       return acc + totalValue;
     }, 0);
 
-    console.log({ user_id, total_value });
-
     const { id: order_id } = await Order.create({
       total_value,
       user_id,
@@ -74,11 +72,15 @@ class OrderController {
       };
     });
 
-    console.log(products_order);
+    await ProductsOrder.bulkCreate(products_order)
+      .then(() => {
+        return ProductsOrder.findAll();
+      })
+      .then((productsOrders) => {
+        return productsOrders.dataValues;
+      });
 
-    const response = await ProductsOrder.bulkCreate(products_order);
-
-    return res.json(response);
+    return res.json(products_order);
   }
 }
 
