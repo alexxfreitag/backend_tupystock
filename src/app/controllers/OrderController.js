@@ -44,13 +44,11 @@ class OrderController {
         (product) => product.product_id === item.id
       );
 
-      if (productIndex > -1) {
-        return {
-          product_id: item.id,
-          amount: products[productIndex].amount,
-          value: item.value,
-        };
-      }
+      return {
+        product_id: item.id,
+        amount: products[productIndex].amount,
+        value: item.value,
+      };
     });
 
     const total_value = resultPlusAmount.reduce((acc, actualValue) => {
