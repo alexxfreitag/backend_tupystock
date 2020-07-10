@@ -13,7 +13,7 @@ const routes = new Router();
 const upload = multer(multerConfig);
 
 routes.get('/', (req, res) => {
-  return res.json({ message: 'routes test' });
+  return res.json({ message: 'backend rodando :)' });
 });
 
 routes.get('/users', UserController.index);
